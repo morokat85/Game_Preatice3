@@ -84,4 +84,10 @@ public class Orb : MonoBehaviour
             }
         }
     }
+
+    //4
+    void OnMouseDown()
+    {
+        Debug.Log("[Orb] Clicked: " + name);
+    }
 }
