@@ -32,12 +32,23 @@ public class CameraFollow : MonoBehaviour
 
         offset = offset.normalized * distance;
 
-        // Follow Player smoothly
+        // Follow Player
         Vector3 desired = target.position + offset;
 
         transform.position = Vector3.Lerp(
             transform.position,
             desired,
+            followSharpness * Time.deltaTime
+        );
+
+        // Look at Player
+        Quaternion targetRotation = Quaternion.LookRotation(
+            target.position - transform.position
+        );
+
+        transform.rotation = Quaternion.Slerp(
+            transform.rotation,
+            targetRotation,
             followSharpness * Time.deltaTime
         );
     }
